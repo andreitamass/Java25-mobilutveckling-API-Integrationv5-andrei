@@ -4,17 +4,10 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
-import java.net.URL;
-import java.net.HttpURLConnection;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import android.widget.TextView;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,18 +28,19 @@ public class WeatherFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        TextView weatherTemp = view.findViewById(R.id.weatherTemp);
         EditText searchCity = view.findViewById(R.id.searchCity);
         Button searchCityButton = view.findViewById(R.id.searchCityButton);
 
         searchCityButton.setOnClickListener(v -> {
             String city = searchCity.getText().toString();
 
-            getWeather(city);
+            getWeather(city, weatherTemp);
 
         });
     }
 
-    private void getWeather(String city) {
+    private void getWeather(String city, TextView weatherTemp) {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.openweathermap.org/")
@@ -66,6 +60,7 @@ public class WeatherFragment extends Fragment {
             public void onResponse(Call<WeatherResponse> call, Response<WeatherResponse> response) {
                 WeatherResponse weather = response.body();
                 double temperature = weather.main.temp;
+                weatherTemp.setText(temperature + " C");
             }
 
             @Override
