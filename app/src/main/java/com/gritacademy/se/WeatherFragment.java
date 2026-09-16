@@ -13,6 +13,12 @@ import android.widget.Toast;
 
 import java.net.URL;
 import java.net.HttpURLConnection;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class WeatherFragment extends Fragment {
@@ -40,6 +46,27 @@ public class WeatherFragment extends Fragment {
 
     private void getWeather(String city) {
 
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://api.openweathermap.org/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        WeatherAPI weatherAPI = retrofit.create(WeatherAPI.class);
+
+        Call<WeatherResponse> call = weatherAPI.getWeather(
+                city,
+                API_KEY,
+                "metric"
+        );
+
+        String url = "https://api.openweathermap.org/data/2.5/weather"
+                + "?q=" + city
+                + "&appid=" + API_KEY
+                + "&units=metric";
+
+        new Thread(() -> {
+
+        }).start();
     }
 
 }
