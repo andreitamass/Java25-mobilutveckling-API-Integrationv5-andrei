@@ -29,10 +29,18 @@ public class MenuFragment extends Fragment {
     }
 
     private void openCurrency() {
+        requireActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, new CurrencyFragment())
+                .addToBackStack(null)
+                .commit();
     }
 
     private void openWeather() {
+        requireActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, new WeatherFragment())
+                .addToBackStack(null)
+                .commit();
     }
-
-
 }
