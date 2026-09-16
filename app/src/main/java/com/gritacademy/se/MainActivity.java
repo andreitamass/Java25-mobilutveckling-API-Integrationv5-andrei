@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
         Button welcomeButton = findViewById(R.id.welcomeButton);
 
         welcomeButton.setOnClickListener(v -> {
+
+            findViewById(R.id.mainTitle).setVisibility(View.GONE);
+            findViewById(R.id.welcomeButton).setVisibility(View.GONE);
 
             getSupportFragmentManager()
                     .beginTransaction()
