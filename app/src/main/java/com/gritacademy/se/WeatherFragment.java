@@ -17,6 +17,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -59,14 +61,16 @@ public class WeatherFragment extends Fragment {
                 "metric"
         );
 
-        String url = "https://api.openweathermap.org/data/2.5/weather"
-                + "?q=" + city
-                + "&appid=" + API_KEY
-                + "&units=metric";
+        call.enqueue(new Callback<WeatherResponse>() {
+            @Override
+            public void onResponse(Call<WeatherResponse> call, Response<WeatherResponse> response) {
+                WeatherResponse weather = response.body();
+                double temperature = weather.main.temp;
+            }
 
-        new Thread(() -> {
-
-        }).start();
+            @Override
+            public void onFailure(Call<WeatherResponse> call, Throwable throwable) {
+            }
+        });
     }
-
 }
