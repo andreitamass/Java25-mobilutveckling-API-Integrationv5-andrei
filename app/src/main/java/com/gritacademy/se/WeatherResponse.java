@@ -6,6 +6,7 @@ public class WeatherResponse {
 }
 class TemperatureData {
     public double temp;
+    public int humidity;
 }
 
 class WeatherWind {

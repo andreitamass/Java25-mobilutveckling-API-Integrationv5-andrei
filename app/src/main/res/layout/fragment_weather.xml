@@ -11,23 +11,23 @@
         android:id="@+id/weatherTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="188dp"
+        android:layout_marginBottom="30dp"
         android:text="Weather"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/searchCity"
+        app:layout_constraintEnd_toEndOf="@+id/weatherHumidity"
+        app:layout_constraintStart_toStartOf="@+id/weatherWind" />
 
     <EditText
         android:id="@+id/searchCity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="237dp"
         android:ems="10"
         android:hint="Search city"
         android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/weatherTitle" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/searchCityButton"
@@ -53,9 +53,19 @@
         android:id="@+id/weatherWind"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="20dp"
         android:text="Wind"
         app:layout_constraintStart_toStartOf="@+id/weatherTemp"
         app:layout_constraintTop_toBottomOf="@+id/weatherTemp" />
+
+    <TextView
+        android:id="@+id/weatherHumidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="27dp"
+        android:text="Humidity"
+        app:layout_constraintStart_toStartOf="@+id/weatherTemp"
+        app:layout_constraintTop_toBottomOf="@+id/weatherWind" />
 </androidx.constraintlayout.widget.ConstraintLayout>
