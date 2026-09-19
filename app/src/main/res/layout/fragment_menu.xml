@@ -28,12 +28,12 @@
         app:layout_constraintTop_toBottomOf="@+id/menuTitle" />
 
     <Button
-        android:id="@+id/currencyButton"
+        android:id="@+id/historyButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="39dp"
-        android:text="Currency"
+        android:text="History"
         app:layout_constraintStart_toStartOf="@+id/weatherButton"
         app:layout_constraintTop_toBottomOf="@+id/weatherButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

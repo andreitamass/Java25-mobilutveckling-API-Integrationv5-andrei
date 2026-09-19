@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "611347696088",
+    "project_id": "api-integration-v5-andrei",
+    "storage_bucket": "api-integration-v5-andrei.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:611347696088:android:33892070121db3dc90caad",
+        "android_client_info": {
+          "package_name": "com.gritacademy.se"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0JAl2BRr4Y2RVtSeP55R3KUucc8sXde0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
