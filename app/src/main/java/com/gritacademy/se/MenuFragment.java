@@ -19,14 +19,14 @@ public class MenuFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Button weatherButton = view.findViewById(R.id.weatherButton);
-        Button currencyButton = view.findViewById(R.id.historyButton);
+        Button historyButton = view.findViewById(R.id.historyButton);
 
         weatherButton.setOnClickListener(v -> openWeather());
 
-        currencyButton.setOnClickListener(v -> openCurrency());
+        historyButton.setOnClickListener(v -> openHistory());
     }
 
-    private void openCurrency() {
+    private void openHistory() {
         requireActivity().getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragment_container, new HistoryFragment())
