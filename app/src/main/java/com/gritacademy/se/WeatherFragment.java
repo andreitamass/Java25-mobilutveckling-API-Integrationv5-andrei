@@ -15,6 +15,8 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+
 
 public class WeatherFragment extends Fragment {
 
@@ -43,6 +45,8 @@ public class WeatherFragment extends Fragment {
     }
 
     private void getWeather(String city, TextView weatherTemp, TextView weatherWind, TextView weatherHumidity) {
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.openweathermap.org/")
