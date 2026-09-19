@@ -19,12 +19,22 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
+        //Hides title and button, counts where user is to know what to hide
+        getSupportFragmentManager().addOnBackStackChangedListener(() -> {
+
+            boolean showWelcome = getSupportFragmentManager().getBackStackEntryCount() == 0;
+
+            findViewById(R.id.mainTitle).setVisibility(showWelcome ? View.VISIBLE : View.GONE);
+
+            findViewById(R.id.welcomeButton).setVisibility(showWelcome ? View.VISIBLE : View.GONE);
+        });
+
         Button welcomeButton = findViewById(R.id.welcomeButton);
 
         welcomeButton.setOnClickListener(v -> {
 
-            findViewById(R.id.mainTitle).setVisibility(View.GONE);
-            findViewById(R.id.welcomeButton).setVisibility(View.GONE);
+            findViewById(R.id.mainTitle).setVisibility(View.VISIBLE);
+            findViewById(R.id.welcomeButton).setVisibility(View.VISIBLE);
 
             getSupportFragmentManager()
                     .beginTransaction()
