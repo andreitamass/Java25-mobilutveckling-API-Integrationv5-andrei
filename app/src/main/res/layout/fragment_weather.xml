@@ -50,22 +50,12 @@
         app:layout_constraintTop_toBottomOf="@+id/searchCityButton" />
 
     <TextView
-        android:id="@+id/weatherCondition"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="27dp"
-        android:text="Condition"
-        app:layout_constraintStart_toStartOf="@+id/weatherTemp"
-        app:layout_constraintTop_toBottomOf="@+id/weatherTemp" />
-
-    <TextView
         android:id="@+id/weatherWind"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="21dp"
         android:text="Wind"
-        app:layout_constraintEnd_toEndOf="@+id/weatherCondition"
-        app:layout_constraintTop_toBottomOf="@+id/weatherCondition" />
+        app:layout_constraintStart_toStartOf="@+id/weatherTemp"
+        app:layout_constraintTop_toBottomOf="@+id/weatherTemp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,6 +28,7 @@ public class WeatherFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        TextView weatherWind = view.findViewById(R.id.weatherWind);
         TextView weatherTemp = view.findViewById(R.id.weatherTemp);
         EditText searchCity = view.findViewById(R.id.searchCity);
         Button searchCityButton = view.findViewById(R.id.searchCityButton);
@@ -35,12 +36,12 @@ public class WeatherFragment extends Fragment {
         searchCityButton.setOnClickListener(v -> {
             String city = searchCity.getText().toString();
 
-            getWeather(city, weatherTemp);
+            getWeather(city, weatherTemp, weatherWind);
 
         });
     }
 
-    private void getWeather(String city, TextView weatherTemp) {
+    private void getWeather(String city, TextView weatherTemp, TextView weatherWind) {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.openweathermap.org/")
@@ -61,6 +62,8 @@ public class WeatherFragment extends Fragment {
                 WeatherResponse weather = response.body();
                 double temperature = weather.main.temp;
                 weatherTemp.setText(temperature + " C");
+                double windSpeed = weather.wind.speed;
+                weatherWind.setText(windSpeed + " m/s");
             }
 
             @Override
