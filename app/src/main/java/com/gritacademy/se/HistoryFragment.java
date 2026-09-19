@@ -21,8 +21,10 @@ public class HistoryFragment extends Fragment {
 
         TextView historyText = view.findViewById(R.id.historyText);
 
+        //Firebase connection
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+        //Collects Firebase data and displays it in TextView
         db.collection("weatherHistory")
                 .get()
                 .addOnSuccessListener(documents -> {
@@ -37,11 +39,6 @@ public class HistoryFragment extends Fragment {
                     }
 
                     historyText.setText(history);
-
                 });
-
-
-
-
     }
 }

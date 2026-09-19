@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button welcomeButton = findViewById(R.id.welcomeButton);
 
+        //Replaces fragment container with new
         welcomeButton.setOnClickListener(v -> {
 
             getSupportFragmentManager()
@@ -38,14 +39,13 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
     }
-
+    //Method to know where user is navigating to either hide or show elements
     private void updateWelcomeShown() {
         boolean showWelcome =
                 getSupportFragmentManager().getBackStackEntryCount() == 0;

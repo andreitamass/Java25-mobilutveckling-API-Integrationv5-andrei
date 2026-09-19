@@ -24,6 +24,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class WeatherFragment extends Fragment {
 
+    //API KEY
     private final String API_KEY = "76ed108824c68079af4e65ae7ed839e3";
 
     public WeatherFragment() {
@@ -40,6 +41,7 @@ public class WeatherFragment extends Fragment {
         EditText searchCity = view.findViewById(R.id.searchCity);
         Button searchCityButton = view.findViewById(R.id.searchCityButton);
 
+        //Gets information about city when button is pressed
         searchCityButton.setOnClickListener(v -> {
             String city = searchCity.getText().toString();
 
@@ -52,11 +54,13 @@ public class WeatherFragment extends Fragment {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+        //Retrofit
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.openweathermap.org/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
+        //Connection between Retrofit and REST API
         WeatherAPI weatherAPI = retrofit.create(WeatherAPI.class);
 
         Call<WeatherResponse> call = weatherAPI.getWeather(
@@ -69,11 +73,13 @@ public class WeatherFragment extends Fragment {
             @Override
             public void onResponse(Call<WeatherResponse> call, Response<WeatherResponse> response) {
 
+                //Checks if there is an error incase user typed a city that does not exist
                 if (!response.isSuccessful() || response.body() == null) {
                     Toast.makeText(requireContext(), "City not found", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
+                //Displays data from REST API
                 WeatherResponse weather = response.body();
                 double temperature = weather.main.temp;
                 weatherTemp.setText(temperature + " C");
@@ -82,6 +88,7 @@ public class WeatherFragment extends Fragment {
                 int humidity = weather.main.humidity;
                 weatherHumidity.setText(humidity + " %");
 
+                //Saves data in Firebase database
                 Map<String, Object> history = new HashMap<>();
                 history.put("city", city);
                 history.put("temperature", temperature);
@@ -92,6 +99,7 @@ public class WeatherFragment extends Fragment {
 
             }
 
+            //Incase of error/failure
             @Override
             public void onFailure(Call<WeatherResponse> call, Throwable throwable) {
             }

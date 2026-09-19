@@ -1,5 +1,6 @@
 package com.gritacademy.se;
 
+//Converts JSON-file to Java object
 public class WeatherResponse {
     public TemperatureData main;
     public WeatherWind wind;
