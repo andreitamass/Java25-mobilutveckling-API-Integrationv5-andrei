@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -67,6 +68,12 @@ public class WeatherFragment extends Fragment {
         call.enqueue(new Callback<WeatherResponse>() {
             @Override
             public void onResponse(Call<WeatherResponse> call, Response<WeatherResponse> response) {
+
+                if (!response.isSuccessful() || response.body() == null) {
+                    Toast.makeText(requireContext(), "City not found", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 WeatherResponse weather = response.body();
                 double temperature = weather.main.temp;
                 weatherTemp.setText(temperature + " C");
