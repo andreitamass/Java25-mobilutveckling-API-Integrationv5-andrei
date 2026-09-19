@@ -15,6 +15,9 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
@@ -71,6 +74,15 @@ public class WeatherFragment extends Fragment {
                 weatherWind.setText(windSpeed + " m/s");
                 int humidity = weather.main.humidity;
                 weatherHumidity.setText(humidity + " %");
+
+                Map<String, Object> history = new HashMap<>();
+                history.put("city", city);
+                history.put("temperature", temperature);
+                history.put("wind", windSpeed);
+                history.put("humidity", humidity);
+
+                db.collection("weatherHistory").add(history);
+
             }
 
             @Override
